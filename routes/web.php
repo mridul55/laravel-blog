@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CategoryController;
 
 
 
@@ -16,7 +17,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/', function(){
     return view('website.home');
-});
+})->name('website');
 
 Route::get('/about', function(){
     return view('website.about');
@@ -32,6 +33,9 @@ Route::get('/post', function(){
     return view('website.post');
 });
 //Admin Panel Route
-Route::get('/test',function(){
-   return view('admin.dashboard.index');
-});
+ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){ 
+    Route::get('/dashboard',function(){
+        return view('admin.dashboard.index');
+    });
+    Route::resource('category', CategoryController::class);
+ });
