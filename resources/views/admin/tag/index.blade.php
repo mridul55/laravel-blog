@@ -41,7 +41,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @if($tags->count())
+                                @if($tags->count() > 0)
                             @foreach ($tags as $tag)
                                     <tr>
                                         <td>{{$tag->id }}</td>

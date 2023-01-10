@@ -5,13 +5,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Edit Category</h1>
+            <h1 class="m-0">Edit tag</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               
-              <li class="breadcrumb-item"><a href="{{ route('category.index')}}">Category List/</li>
-              <li class="breadcrumb-item active"> Edit Category-- {{ $category->name}} </li>
+              <li class="breadcrumb-item"><a href="{{ route('tag.index')}}">tag List/</li>
+              <li class="breadcrumb-item active"> Edit Tag-- {{ $tag->name}} </li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -26,35 +26,35 @@
             <div class="card">
               <div class="card-header">
                     <div class="d-flex justify-content-between align-item-center">
-                        <!-- <h3 class="card-title">Create Category </h3> -->
-                        <a href="{{ route('category.index') }}" class="btn btn-primary">Go Back To Category List</a>
+                        <!-- <h3 class="card-title">Create tag </h3> -->
+                        <a href="{{ route('tag.index') }}" class="btn btn-primary">Go Back To tag List</a>
                     </div>
                 </div>
                 
                    <div class="card-body p-0">
                         <div class="row">
                             <div class="col-12 col-lg-6 offset-lg-3 col-md-8 offset-md-2">
-                                <form action="{{ route('category.update', [$category->id])}}" method="POST">
+                                <form action="{{ route('tag.update', [$tag->id])}}" method="POST">
                                     @csrf
                                     @method('PUT')
                                     <div class="card-body">
                                     @include('includes.error')
                                     <div class="form-group">
-                                        <label for="name">Category Name</label>
-                                        <input type="name" class="form-control" name="name" value="{{ $category->name}}"
-                                         placeholder="Enter Category Name">
+                                        <label for="name">Tag Name</label>
+                                        <input type="name" class="form-control" name="name" value="{{ $tag->name}}"
+                                         placeholder="Enter tag Name">
                                     </div>
                                     <div class="form-group">
                                         <label for="description">Description</label>
                                         <textarea name="description" id="description"  rows="4" class="form-control" 
-                                        placeholder="Enter Description">{{ $category->description}}</textarea>
+                                        placeholder="Enter Description">{{ $tag->description}}</textarea>
                                     </div>
                                 
                                     </div>
                                     <!-- /.card-body -->
 
                                     <div class="card-footer">
-                                    <button type="submit" class="btn btn-md btn-primary">Update Category</button>
+                                    <button type="submit" class="btn btn-md btn-primary">Update tag</button>
                                     </div>
                                 </form>
                             </div>
