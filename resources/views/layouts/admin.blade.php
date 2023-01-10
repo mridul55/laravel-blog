@@ -190,13 +190,21 @@
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
+          <!-- This id Tag Categories here.... -->
                <li class="nav-item mt-auto">
             <a href="{{ route('category.index') }}"  class="nav-link">
               <i class="nav-icon fas fa-tags"></i>
               <p>
                 Categories
+              </p>
+            </a>
+          </li>
+          <!-- This id Tag sidebar here.... -->
+          <li class="nav-item mt-auto">
+            <a href="{{ route('tag.index') }}"  class="nav-link">
+              <i class="nav-icon fas fa-tag"></i>
+              <p>
+                Tags
               </p>
             </a>
           </li>

@@ -2,14 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
-
-
+use App\Http\Controllers\TagController;
 
 Route::get('/', function () {
     return view('welcome');
 });
-
-
 
 Auth::routes();
 
@@ -38,4 +35,6 @@ Route::get('/post', function(){
         return view('admin.dashboard.index');
     });
     Route::resource('category', CategoryController::class);
+    Route::resource('tag', TagController::class);
+
  });
