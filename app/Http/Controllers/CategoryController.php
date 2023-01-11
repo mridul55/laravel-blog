@@ -94,7 +94,6 @@ class CategoryController extends Controller
     $category-> description = $request->description;
     $category->save();
     
-
     Session::flash('success', 'Category Updated Successfully');
 
     return redirect()->back();

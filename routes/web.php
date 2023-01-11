@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\PostController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -36,5 +38,7 @@ Route::get('/post', function(){
     });
     Route::resource('category', CategoryController::class);
     Route::resource('tag', TagController::class);
+    Route::resource('post', PostController::class);
+
 
  });
