@@ -73,6 +73,17 @@
                                       </div>
                                        
                                     </div>
+                                    <div class="form-group d-flex flex-warp">
+                                      @foreach($tags as $tag)
+                                      <div class="custom-control custom-checkbox" style="margin-right:20px">
+                                          <input class="custom-control-input" name="tags[]" type="checkbox" id="tag{{$tag->id }}"
+                                           value="{{$tag->id }}" 
+                                          
+                                           >
+                                          <label for="tag{{$tag->id }}" class="custom-control-label">{{ $tag->name }}</label>
+                                      </div>
+                                      @endforeach
+                                    </div>
                               
                                     <div class="form-group">
                                         <label for="description">Description</label>
@@ -106,4 +117,19 @@
      
     </div>
 
+@endsection
+
+@section('style')
+<link rel="stylesheet" href="{{ asset('admin') }}/css/summernote-bs4.min.css">
+@endsection
+
+@section('script')
+  <script src="{{ asset('/admin/js/summernote-bs4.min.js') }}"></script>
+  <script>
+      $('#description').summernote({
+        placeholder: 'Hello Bootstrap 5',
+        tabsize: 2,
+        height: 300
+      });
+    </script>
 @endsection

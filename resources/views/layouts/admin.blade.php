@@ -13,6 +13,7 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('admin') }}/css/adminlte.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" class="css">
+  @yield('style')
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -268,6 +269,7 @@
 <script src="{{ asset('admin') }}/js/adminlte.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
+@yield('script')
 <script>
   @if(Session::has('success'))
   toastr.success("{{ Session::get('success')}}");
