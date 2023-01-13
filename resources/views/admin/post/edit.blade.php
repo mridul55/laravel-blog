@@ -76,7 +76,7 @@
                                     <div class="form-group d-flex flex-warp">
                                       @foreach($tags as $tag)
                                       <div class="custom-control custom-checkbox" style="margin-right:20px">
-                                          <input class="custom-control-input" name="tags[]" type="checkbox" id="tag{{$tag->id }}"
+                                          <input class="custom-control-input" {{in_array($tag->id, $tag_id)?'checked':''}} name="tags[]" type="checkbox" 
                                            value="{{$tag->id }}" 
                                           
                                            >

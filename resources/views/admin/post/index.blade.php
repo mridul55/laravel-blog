@@ -53,13 +53,13 @@
                                         </div>
                                         </td>
                                         <td>{{$post->title }}</td>
-                                        <td>{{$post->category_id }}</td>
+                                        <td>{{$post->category->name }}</td>
                                         <td>
                                             @foreach($post->tags as $tag)
                                               <span class="badge badge primary">{{$tag->name }}</span>
                                             @endforeach
                                         </td>
-                                        <td>{{$post->id }}</td>
+                                        <td>{{$post->user->name }}</td>
                                         
                                         <td class="d-flex">
                                         <a href="{{ route('post.show', [$post->id])}}" class="btn btn-sm btn-success mr-1"><i class="fas fa-eye"></i></a>

@@ -8,6 +8,7 @@ use App\Models\Post;
 use App\Models\Tag;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use DB;
 
 class PostController extends Controller
 {
@@ -94,7 +95,8 @@ class PostController extends Controller
     {
         $tags = Tag::all();
         $categories = Category::all();
-        return view('admin.post.edit', compact(['post', 'categories', 'tags']));
+        $tag_id = DB::table('post_tag')->where('post_id', $post->id)->pluck('tag_id')->toArray();
+        return view('admin.post.edit', compact(['post', 'categories', 'tags','tag_id']));
     }
 
     /**
