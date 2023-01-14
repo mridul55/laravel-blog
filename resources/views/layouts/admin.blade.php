@@ -1,11 +1,9 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AdminLTE 3 | Starter</title>
-
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
@@ -32,7 +30,6 @@
         <a href="#" class="nav-link">Contact</a>
       </li>
     </ul>
-
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Navbar Search -->
@@ -215,6 +212,23 @@
             <i class="nav-icon fas fa-pen-square"></i>
               <p>
                 Post
+              </p>
+            </a>
+          </li>
+          <li class="nav-item mt-auto">
+            <a href="{{ route('user.index') }}"  class="nav-link">
+            <i class="nav-icon fas fa-user"></i>
+              <p>
+                User
+              </p>
+            </a>
+          </li>
+          <li class="nav-header">Your Account</li>
+          <li class="nav-item mt-auto">
+            <a href="{{ route('user.profile') }}"  class="nav-link">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                Your Profile
               </p>
             </a>
           </li>

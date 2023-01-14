@@ -5,6 +5,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\FrontEndController;
+use App\Http\Controllers\UserController;
+
 
 
 
@@ -31,5 +33,9 @@ Route::get('/post/{slug}', [FrontEndController::class, 'post'])->name('website.p
     Route::resource('category', CategoryController::class);
     Route::resource('tag', TagController::class);
     Route::resource('post', PostController::class);
-    
+    Route::resource('user', UserController::class);
+    Route::get('/profile', [UserController::class, 'profile'])->name('user.profile');
+    Route::post('/profile', [UserController::class, 'profile_update'])->name('user.profile.update');
+
+
  });
