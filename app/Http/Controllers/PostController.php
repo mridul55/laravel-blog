@@ -96,9 +96,9 @@ class PostController extends Controller
         $tags = Tag::all();
         $categories = Category::all();
         $tag_id = DB::table('post_tag')->where('post_id', $post->id)->pluck('tag_id')->toArray();
+       
         return view('admin.post.edit', compact(['post', 'categories', 'tags','tag_id']));
     }
-
     /**
      * Update the specified resource in storage.
      *

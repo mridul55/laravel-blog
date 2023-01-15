@@ -66,15 +66,11 @@
 
               <h2><a href="{{ route('website.post', ['slug'=>$post->slug]) }}">{{ $post->title}}</a></h2>
               <div class="post-meta align-items-center text-left clearfix">
-                <figure class="author-figure mb-0 mr-3 float-left"><img src="{{ $post->image }}" alt="Image" class="img-fluid"></figure>
+                <figure class="author-figure mb-0 mr-3 float-left"><img src="{{ asset($post->user->image) }}" alt="Image" class="img-fluid"></figure>
                 <span class="d-inline-block mt-1">By <a href="#">{{ $post->user->name}}</a></span>
-                <span>&nbsp;-&nbsp; {{ $post->created_at->format('Y-m-d') }}</span>
+                <span>&nbsp;-&nbsp;   </span>
               </div>
-              @php
-              //  $sp = \Illuminate\Support\Str::limit($post->description, 500);
-
-              
-              // @endphp
+             
                 <p>{!!  \Illuminate\Support\Str::limit($post->description, 500)  !!}</p>
                 <p><a href="{{ route('website.post', ['slug'=>$post->slug]) }}">Read More</a></p>
               </div>

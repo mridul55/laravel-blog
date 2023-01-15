@@ -77,7 +77,7 @@
                                       @foreach($tags as $tag)
                                       <div class="custom-control custom-checkbox" style="margin-right:20px">
                                           <input class="custom-control-input" {{in_array($tag->id, $tag_id)?'checked':''}} name="tags[]" type="checkbox" 
-                                           value="{{$tag->id }}" 
+                                           value="{{$tag->id }}"
                                           
                                            >
                                           <label for="tag{{$tag->id }}" class="custom-control-label">{{ $tag->name }}</label>
