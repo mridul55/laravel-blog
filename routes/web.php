@@ -39,5 +39,7 @@ Route::get('/post/{slug}', [FrontEndController::class, 'post'])->name('website.p
     Route::get('/profile', [UserController::class, 'profile'])->name('user.profile');
     Route::post('/profile', [UserController::class, 'profile_update'])->name('user.profile.update');
     Route::get('setting', [SettingController::class, 'edit'])->name('setting.index');
+    Route::post('setting', [SettingController::class, 'update'])->name('setting.update');
+
     //Route::resource('setting', SettingController::class);
  });

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Session;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 
@@ -69,10 +69,28 @@ class SettingController extends Controller
      * @param  \App\Models\Setting  $setting
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Setting $setting)
+    public function update(Request $request)
     {
-        //
+       //dd($request->all());
+       $this->validate($request,[
+               'name' => 'required',
+               'copyroght' => 'required',
+       ]);
+       $setting = Setting::first();
+       $setting->update($request->all());
+
+        
+        if($request->hasFile('site_logo')){
+            $image = $request->image;
+            $image_new_name = time() . '.' . $image->getClientOriginalExtension();
+            $image->move('storage/user/', $image_new_name);
+            $setting->site_logo = '/storage/setting/' . $image_new_name;
+            $setting->save();
+        }
+         Session::flash('success', 'setting Profile created Succefully');
+         return redirect()->back();
     }
+    
 
     /**
      * Remove the specified resource from storage.
