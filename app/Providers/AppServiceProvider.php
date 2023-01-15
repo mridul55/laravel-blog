@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
 use Illuminate\Pagination\Paginator;
 use App\Models\Category;
+use App\Models\Setting;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -31,5 +33,8 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrap();
         $categories = Category:: take(5)->get();
         view::share('categories', $categories);
+
+        $setting = Setting::first();
+        view::share('setting', $setting);
     }
 }

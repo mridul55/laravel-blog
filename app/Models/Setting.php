@@ -8,7 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Setting extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'name','copyroght'
-    ];
+    // protected $fillable = [
+    //     'name','image','description','facebook','twiter','instragram','reddit','email','copyroght','phone','address'
+    // ];
+
+    protected $guarded = [];
+   
+    
 }

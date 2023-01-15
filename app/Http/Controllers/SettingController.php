@@ -14,7 +14,8 @@ class SettingController extends Controller
      */
     public function index()
     {
-        //
+        $settings = Setting::all();
+        return view('admin.setting.index', compact('settings'));
     }
 
     /**
@@ -24,7 +25,7 @@ class SettingController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.setting.create');
     }
 
     /**
@@ -35,7 +36,24 @@ class SettingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request->all());
+        $this->validate($request,[
+            'name' => 'required',
+            'copyroght' => 'required',
+         ]);
+         $path = null;
+        if($request->hasFile('image')){
+            $image = $request->image;
+            $image_new_name = time() . '.' . $image->getClientOriginalExtension();
+            $image->move('storage/setting/', $image_new_name);
+            $path = '/storage/setting/' . $image_new_name;
+        }
+        $data =$request->all();
+        $data['image'] = $path;
+        $setting = new Setting();
+        $setting->create($data);
+        Session::flash('success', 'setting Profile created Succefully');
+        return redirect()->back();
     }
 
     /**
@@ -57,8 +75,9 @@ class SettingController extends Controller
      */
     public function edit(Setting $setting)
     {
-        //
-        $setting = Setting::first();
+        
+        //$setting = Setting::first();
+        //dd($setting);
         return view('admin.setting.edit', compact('setting'));
     }
 
@@ -69,26 +88,26 @@ class SettingController extends Controller
      * @param  \App\Models\Setting  $setting
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
        //dd($request->all());
        $this->validate($request,[
-               'name' => 'required',
-               'copyroght' => 'required',
-       ]);
-       $setting = Setting::first();
-       $setting->update($request->all());
-
-        
-        if($request->hasFile('site_logo')){
-            $image = $request->image;
-            $image_new_name = time() . '.' . $image->getClientOriginalExtension();
-            $image->move('storage/user/', $image_new_name);
-            $setting->site_logo = '/storage/setting/' . $image_new_name;
-            $setting->save();
-        }
-         Session::flash('success', 'setting Profile created Succefully');
-         return redirect()->back();
+        'name' => 'required',
+        'copyroght' => 'required',
+     ]);
+     $path = null;
+    if($request->hasFile('image')){
+        $image = $request->image;
+        $image_new_name = time() . '.' . $image->getClientOriginalExtension();
+        $image->move('storage/setting/', $image_new_name);
+        $path = '/storage/setting/' . $image_new_name;
+    }
+    $data =$request->all();
+    $data['image'] = $path;
+    $setting = Setting::find($id);
+    $setting->update($data);
+    Session::flash('success', 'setting Profile created Succefully');
+    return redirect()->back();
     }
     
 
