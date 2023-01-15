@@ -1,10 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+use Session;
 use App\Models\Post;
 use App\Models\Category;
 use App\Models\Tag;
 use App\Models\User;
+use App\Models\Contact;
+
+
 
 
 
@@ -68,5 +72,23 @@ class FrontEndController extends Controller
             return redirect('/');
         }
      
+    }
+    // public function contactMessage(){
+
+    //     return view('website.contactMessage');
+    // }
+    public function contactMessageStore(Request $request){
+            $this->validate($request,[
+            'name' => 'required',
+            'email' => 'required',
+            'subject' => 'required',
+            'message' => 'required',
+         ]);
+        
+        $data =$request->all();
+        $setting = new Contact();
+        $setting->create($data);
+        Session::flash('success', 'Thanks for your message');
+        return redirect()->back();
     }
 }

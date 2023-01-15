@@ -100,7 +100,7 @@
                 <a href="#"><span class="icon-twitter p-2"></span></a>
                 <a href="#"><span class="icon-instagram p-2"></span></a>
                 <a href="#"><span class="icon-rss p-2"></span></a>
-                <a href="#"><span class="icon-envelope p-2"></span></a>
+                <a href="{{route('website.contact')}}"><span class="icon-envelope p-2"></span></a>
               </p>
             </div>
           </div>

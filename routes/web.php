@@ -25,10 +25,12 @@ Route::get('/about', [FrontEndController::class, 'about'])->name('website.about'
 Route::get('/category/{slug}', [FrontEndController::class, 'category'])->name('website.category');
 Route::get('/contact', [FrontEndController::class, 'contact'])->name('website.contact');
 Route::get('/post/{slug}', [FrontEndController::class, 'post'])->name('website.post');
+//Route::get('/contactMessage',[FrontEndController::class,'contactMessage'])->name('website.contactMessage');
+Route::post('/contactMessageStore',[FrontEndController::class,'contactMessageStore'])->name('website.contactMessageStore');
 
 
 //Admin Panel Route
- Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){ 
+Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){ 
     Route::get('/dashboard',function(){
         return view('admin.dashboard.index');
     });
