@@ -12,7 +12,10 @@
               <span class="post-category text-white bg-success mb-3">{{ $post->category->name }}</span>
               <h1 class="mb-4"><a href="javascript:void()">{{ $post->title }}</a></h1>
               <div class="post-meta align-items-center text-center">
-                <figure class="author-figure mb-0 mr-3 d-inline-block"><img src="{{asset($post->user->image) }}" alt="Image" class="img-fluid"></figure>
+                <figure class="author-figure mb-0 mr-3 d-inline-block">
+                  <img src="@if($post->user->image){{asset($post->user->image) }} @else{{ asset('website/images/user.png') }} @endif"
+                   alt="Image" class="img-fluid">
+                </figure>
                 <span class="d-inline-block mt-1">{{ $post->user->name }}</span>
                 <span>&nbsp;-&nbsp;{{ $post->created_at->format('M d, Y')}}</span>
               </div>
@@ -50,7 +53,8 @@
               <ul class="comment-list">
                 <li class="comment">
                   <div class="vcard">
-                    <img src="{{asset('website') }}/images/person_1.jpg" alt="Image placeholder">
+                    <img src="@if($post->user->image){{asset($post->user->image) }} @else{{ asset('website/images/user.png') }} @endif"
+                     alt="Image placeholder">
                   </div>
                   <div class="comment-body">
                     <h3>Jean Doe</h3>
@@ -62,7 +66,7 @@
 
                 <li class="comment">
                   <div class="vcard">
-                    <img src="{{asset('website') }}/images/person_1.jpg" alt="Image placeholder">
+                    <img src="@if($post->user->image){{asset($post->user->image) }} @else{{ asset('website/images/user.png') }} @endif" alt="Image placeholder">
                   </div>
                   <div class="comment-body">
                     <h3>Jean Doe</h3>
@@ -74,7 +78,7 @@
                   <ul class="children">
                     <li class="comment">
                       <div class="vcard">
-                        <img src="{{asset('website') }}/images/person_1.jpg" alt="Image placeholder">
+                        <img src="@if($post->user->image){{asset($post->user->image) }} @else{{ asset('website/images/user.png') }} @endif" alt="Image placeholder">
                       </div>
                       <div class="comment-body">
                         <h3>Jean Doe</h3>
@@ -87,7 +91,7 @@
                       <ul class="children">
                         <li class="comment">
                           <div class="vcard">
-                            <img src="{{asset('website') }}/images/person_1.jpg" alt="Image placeholder">
+                            <img src="@if($post->user->image){{asset($post->user->image) }} @else{{ asset('website/images/user.png') }} @endif" alt="Image placeholder">
                           </div>
                           <div class="comment-body">
                             <h3>Jean Doe</h3>
@@ -99,7 +103,7 @@
                             <ul class="children">
                               <li class="comment">
                                 <div class="vcard">
-                                  <img src="{{asset('website') }}/images/person_1.jpg" alt="Image placeholder">
+                                  <img src="@if($post->user->image){{asset($post->user->image) }} @else{{ asset('website/images/user.png') }} @endif" alt="Image placeholder">
                                 </div>
                                 <div class="comment-body">
                                   <h3>Jean Doe</h3>
@@ -117,7 +121,7 @@
 
                 <li class="comment">
                   <div class="vcard">
-                    <img src="{{asset('website') }}/images/person_1.jpg" alt="Image placeholder">
+                    <img src="@if($post->user->image){{asset($post->user->image) }} @else{{ asset('website/images/user.png') }} @endif" alt="Image placeholder">
                   </div>
                   <div class="comment-body">
                     <h3>Jean Doe</h3>
@@ -197,7 +201,7 @@
                     <a href="">
                       <img src="{{ $post->image }}" alt="Image placeholder" class="mr-4">
                       <div class="text">
-                        <h4>{{$post->title }}s</h4>
+                        <h4>{{$post->title }}</h4>
                         <div class="post-meta">
                           <span class="mr-2">{{ $post->created_at->format('Y-m-d') }}</span>
                         </div>
@@ -250,42 +254,42 @@
         <div class="row align-items-stretch retro-layout">
           
           <div class="col-md-5 order-md-2">
-            <a href="single.html" class="hentry img-1 h-100 gradient" style="background-image: url('{{asset('website') }}/{{asset('website') }}/images/img_4.jpg');">
-              <span class="post-category text-white bg-danger">Travel</span>
-              <div class="text">
-                <h2>The 20 Biggest Fintech Companies In America 2019</h2>
-                <span>February 12, 2019</span>
-              </div>
+            @foreach($lastRelatedPost as $post)
+            <a href="single.html" class="hentry img-1 h-100 gradient"
+                style="background-image: url('{{ $post->image }}');">
+                <span class="post-category text-white bg-danger">{{ $post->category->name }}</span>
+                <div class="text">
+                    <h2>{{ $post->title }}</h2>
+                    <span>{{ $post->created_at->format('M d, Y')}}</span>
+                </div>
             </a>
-          </div>
+            @endforeach
+        </div>
 
-          <div class="col-md-7">
-            
-            <a href="single.html" class="hentry img-2 v-height mb30 gradient" style="background-image: url('{{asset('website') }}/{{asset('website') }}/images/img_1.jpg');">
-              <span class="post-category text-white bg-success">Nature</span>
-              <div class="text text-sm">
-                <h2>The 20 Biggest Fintech Companies In America 2019</h2>
-                <span>February 12, 2019</span>
-              </div>
+        <div class="col-md-7">
+            @foreach($firstRelatedPost as $post)
+            <a href="single.html" class="hentry img-2 v-height mb30 gradient"
+                style="background-image: url('{{ $post->image }}');">
+                <span class="post-category text-white bg-success">{{ $post->category->name }}</span>
+                <div class="text text-sm">
+                    <h2>{{ $post->title }}</h2>
+                    <span>{{ $post->created_at->format('M d, Y')}}</span>
+                </div>
             </a>
-            
-            <div class="two-col d-block d-md-flex">
-              <a href="single.html" class="hentry v-height img-2 gradient" style="background-image: url('{{asset('website') }}/{{asset('website') }}/images/img_2.jpg');">
-                <span class="post-category text-white bg-primary">Sports</span>
-                <div class="text text-sm">
-                  <h2>The 20 Biggest Fintech Companies In America 2019</h2>
-                  <span>February 12, 2019</span>
-                </div>
-              </a>
-              <a href="single.html" class="hentry v-height img-2 ml-auto gradient" style="background-image: url('{{asset('website') }}/{{asset('website') }}/images/img_3.jpg');">
-                <span class="post-category text-white bg-warning">Lifestyle</span>
-                <div class="text text-sm">
-                  <h2>The 20 Biggest Fintech Companies In America 2019</h2>
-                  <span>February 12, 2019</span>
-                </div>
-              </a>
-            </div>  
-            
+            @endforeach
+
+            <div class="two-col d-block d-md-flex justify-content-between">
+                @foreach($firstRelatedPosts2 as $post)
+                <a href="{{ route('website.post', ['slug' => $post->slug]) }}" class="hentry v-height img-2 gradient"
+                    style="background-image: url('{{ $post->image }}');">
+                    <span class="post-category text-white bg-primary">{{ $post->category->name }}</span>
+                    <div class="text text-sm">
+                        <h2>{{ $post->title }}</h2>
+                        <span>{{ $post->created_at->format('M d, Y')}}</span>
+                    </div>
+                </a>
+                @endforeach
+            </div>
           </div>
         </div>
 
