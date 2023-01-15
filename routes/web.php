@@ -6,6 +6,8 @@ use App\Http\Controllers\TagController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\FrontEndController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SettingController;
+
 
 
 
@@ -36,6 +38,6 @@ Route::get('/post/{slug}', [FrontEndController::class, 'post'])->name('website.p
     Route::resource('user', UserController::class);
     Route::get('/profile', [UserController::class, 'profile'])->name('user.profile');
     Route::post('/profile', [UserController::class, 'profile_update'])->name('user.profile.update');
-
-
+    Route::get('setting', [SettingController::class, 'edit'])->name('setting.index');
+    //Route::resource('setting', SettingController::class);
  });
