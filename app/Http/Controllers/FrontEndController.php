@@ -79,7 +79,7 @@ class FrontEndController extends Controller
     // }
     public function contactMessageStore(Request $request){
             $this->validate($request,[
-            'name' => 'required',
+            'name' => 'required', 
             'email' => 'required',
             'subject' => 'required',
             'message' => 'required',
@@ -88,7 +88,7 @@ class FrontEndController extends Controller
         $data =$request->all();
         $setting = new Contact();
         $setting->create($data);
-        Session::flash('success', 'Thanks for your message');
+        Session::flash('message_sent', 'Thanks for your message');
         return redirect()->back();
     }
 }

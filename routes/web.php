@@ -7,9 +7,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\FrontEndController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SettingController;
-
-
-
+use App\Http\Controllers\ContactController;
 
 
 Route::get('/', function () {
@@ -42,4 +40,5 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     Route::post('/profile', [UserController::class, 'profile_update'])->name('user.profile.update');
 
     Route::resource('setting', SettingController::class);
+    Route::resource('contact', ContactController::class);
  });

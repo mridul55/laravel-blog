@@ -26,10 +26,10 @@
             
 
             <form action="{{ route('website.contactMessageStore') }}" method="post" class="p-5 bg-white">
-              @csrf 
-              
-             
-
+              @csrf        
+             @if(Session::has('message_sent'))
+             <div class="aleart aleart-success">{{Session::get('message-sent') }}</div>
+              @endif
               <div class="row form-group">
                 <div class="col-md-6 mb-3 mb-md-0">
                   <label class="text-black" for="name">Your Name</label>
