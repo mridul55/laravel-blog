@@ -11,28 +11,23 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
 
 
-
-
-
 Route::get('/', function () {
     return view('welcome');
 });
 
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-//font end route
-Route::get('/', [FrontEndController::class, 'home'])->name('website');
-Route::get('/about', [FrontEndController::class, 'about'])->name('website.about');
-Route::get('/category/{slug}', [FrontEndController::class, 'category'])->name('website.category');
-Route::get('/tag/{slug}', [FrontEndController::class, 'tag'])->name('website.tag');
-Route::get('/contact', [FrontEndController::class, 'contact'])->name('website.contact');
-Route::get('/post/{slug}', [FrontEndController::class, 'post'])->name('website.post');
-//Route::get('/contactMessage',[FrontEndController::class,'contactMessage'])->name('website.contactMessage');
-Route::post('/contactMessageStore',[FrontEndController::class,'contactMessageStore'])->name('website.contactMessageStore');
-
-//Admin Panel Route
-Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){ 
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    //font end route
+    Route::get('/', [FrontEndController::class, 'home'])->name('website');
+    Route::get('/about', [FrontEndController::class, 'about'])->name('website.about');
+    Route::get('/category/{slug}', [FrontEndController::class, 'category'])->name('website.category');
+    Route::get('/tag/{slug}', [FrontEndController::class, 'tag'])->name('website.tag');
+    Route::get('/contact', [FrontEndController::class, 'contact'])->name('website.contact');
+    Route::get('/post/{slug}', [FrontEndController::class, 'post'])->name('website.post');
+    //Route::get('/contactMessage',[FrontEndController::class,'contactMessage'])->name('website.contactMessage');
+    Route::post('/contactMessageStore',[FrontEndController::class,'contactMessageStore'])->name('website.contactMessageStore');
+  //Admin Panel Route
+    Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){ 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::resource('category', CategoryController::class);
     Route::resource('tag', TagController::class);
@@ -42,4 +37,4 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     Route::post('/profile', [UserController::class, 'profile_update'])->name('user.profile.update');
     Route::resource('setting', SettingController::class);
     Route::resource('contact', ContactController::class);
- });
+   });

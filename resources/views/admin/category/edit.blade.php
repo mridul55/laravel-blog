@@ -39,7 +39,7 @@
                                     @method('PUT')
                                     <div class="card-body">
                                     @include('includes.error')
-                                    <div class="form-group">
+                                    <div class="form-group"> 
                                         <label for="name">Category Name</label>
                                         <input type="name" class="form-control" name="name" value="{{ $category->name}}"
                                          placeholder="Enter Category Name">
@@ -47,7 +47,7 @@
                                     <div class="form-group">
                                         <label for="description">Description</label>
                                         <textarea name="description" id="description"  rows="4" class="form-control" 
-                                        placeholder="Enter Description">{{ $category->description}}</textarea>
+                                        placeholder="Enter Description">{{ $category->description}}</textarea> 
                                     </div>
                                 
                                     </div>

@@ -84,11 +84,13 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-       // validation
+        
+        // validation
        $this->validate($request, [
         'name' => 'required|unique:categories',$category->name,
+       
     ]);
-
+   //dd($request->all());
     $category-> name = $request->name;
     $category-> slug = Str::slug($request->name, '-');
     $category-> description = $request->description;

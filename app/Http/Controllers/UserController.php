@@ -31,7 +31,7 @@ class UserController extends Controller
                'password' => bcrypt($request->password),
                'description' => $request->description,
         ]);
-        dd($user);
+        //dd($user);
 
         Session::flash('success', 'User Created successfully');
         return redirect()->back();
@@ -84,12 +84,11 @@ class UserController extends Controller
         $user-> name = $request->name;
         $user->email = $request->email;
         $user-> description = $request->description;
-        
-        
+           
         if($request->has('password') && $request->password !== null){
             $user->password =bcrypt($request->password);
         }
-        
+             
         if($request->hasFile('image')){
             $image = $request->image;
             $image_new_name = time() . '.' . $image->getClientOriginalExtension();

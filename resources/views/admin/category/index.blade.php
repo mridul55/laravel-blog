@@ -36,7 +36,7 @@
                                     <th style="width: 10px">#</th>
                                     <th>Name</th>
                                     <th>Slug</th>
-                                    <th>Post Counnt</th>
+                                    <th>Post Count</th>
                                     <th style="width: 40px">Action</th>
                                 </tr>
                             </thead>
@@ -48,7 +48,8 @@
                                         <td>{{$category->name}}</td>
                                         <td>{{$category->slug}}</td>
                                         <td>
-                                        {{$category->id }}
+                                            {{$category->posts->count()}}
+                                        {{-- {{$category->id }} --}}
                                         </td>
                                         <td class="d-flex">
                                           <a href="{{ route('category.edit',[$category->id])}}" class="btn btn-sm btn-primary mr-1"><i class="fas fa-edit"></i></a>
@@ -56,8 +57,7 @@
                                             @method('DELETE')
                                             @csrf
                                             <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
-                                          </form>
-                                          
+                                          </form>     
                                           <!-- <a href="{{ route('category.show', [$category->id])}}" class="btn btn-sm btn-success mr-1"><i class="fas fa-eye"></i></a> -->
                                         </td>
                                         
@@ -76,7 +76,7 @@
                         </table>
                     </div>
                     <!-- /.card-body -->
-                    <div class="card-footer text-center d-flex justify-content-center" >
+                    <div class="card-footer" >
                          {{ $categories->links()}}
                     </div>
                     

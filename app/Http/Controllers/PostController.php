@@ -123,6 +123,9 @@ class PostController extends Controller
            $post->tags()->sync($request->tags);
            
          if($request->hasFile('image')){
+            if(file_exists(public_path($post->image))){
+                unlink(public_path($post->image));
+            }
             $image = $request->image;
             $image_new_name = time() . '.' . $image->getClientOriginalExtension();
             $image->move('storage/post/', $image_new_name);

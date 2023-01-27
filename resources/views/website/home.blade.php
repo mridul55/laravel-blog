@@ -14,7 +14,6 @@
                         <span class="date">{{ $post->created_at->format('Y-m-d') }}</span>
                     </div>
                 </a>
-
                 @endforeach
             </div>
             <div class="col-md-4">
@@ -41,8 +40,6 @@
                         <span class="date">{{ $post->created_at->format('Y-m-d') }}</span>
                     </div>
                 </a>
-
-
                 @endforeach
             </div>
         </div>
@@ -64,23 +61,19 @@
                             alt="Image" class="img-fluid rounded"></a>
                     <div class="excerpt">
                         <span class="post-category text-white bg-secondary mb-3">{{ $post->category->name }}</span>
-
                         <h2><a href="{{ route('website.post', ['slug'=>$post->slug]) }}">{{ $post->title}}</a></h2>
                         <div class="post-meta align-items-center text-left clearfix">
                             <figure class="author-figure mb-0 mr-3 float-left"><img
-                                    src="{{ asset($post->user->image) }}" alt="Image" class="img-fluid"></figure>
+                                src="{{ asset($post->user->image) }}" alt="Image" class="img-fluid"></figure>
                             <span class="d-inline-block mt-1">By <a href="#">{{ $post->user->name}}</a></span>
                             <span>&nbsp;-&nbsp; </span>
-                        </div>
-
+                        </div> 
                         <p>{!! \Illuminate\Support\Str::limit($post->description, 500) !!}</p>
                         <p><a href="{{ route('website.post', ['slug'=>$post->slug]) }}">Read More</a></p>
                     </div>
                 </div>
             </div>
             @endforeach
-
-
         </div>
         <div class="row text-center pt-5 border-top">
             {{ $recentpost->links() }}

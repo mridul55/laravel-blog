@@ -37,7 +37,7 @@
             <div class="pt-5">
               <p>
 
-                 Categories:  <a href="#">{{ $post->category->name}}</a>, 
+                 Categories:  <a href="#">{{ $post->category->name}}</a>
                   @if($post->tags()->count() > 0)
                   Tags:
                     @foreach($post->tags as $tag)

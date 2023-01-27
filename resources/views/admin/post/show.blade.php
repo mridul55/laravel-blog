@@ -52,7 +52,7 @@
                         </tr>
                         <tr>
                             <th style="width: 200px">Post Tags</th>
-                            <td>@foreach($post->tags as $tag)
+                            <td>@foreach($post-> tags as $tag)
                                  <span class="badge badge primary">{{$tag->name }}</span>
                                 @endforeach</td>
                         </tr>

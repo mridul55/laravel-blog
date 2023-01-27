@@ -9,9 +9,6 @@ use App\Models\User;
 use App\Models\Contact;
 
 
-
-
-
 use Illuminate\Http\Request;
 
 class FrontEndController extends Controller
@@ -27,7 +24,6 @@ class FrontEndController extends Controller
      $lastfooter = $footerposts->splice(0, 1);
 
      $recentpost =  Post::with('category', 'user')->orderBy('created_at', 'DESC')->paginate(9);
-
      return view('website.home', compact(['posts','firstposts','middleposts','lastposts','footerposts',
       'recentpost', 'firstfooter','middlefooter','lastfooter']));
    }
@@ -58,7 +54,7 @@ class FrontEndController extends Controller
         }
         
     }
-   
+    
      public function contact(){
         return view('website.contact');
     }
@@ -67,7 +63,6 @@ class FrontEndController extends Controller
         $post = Post::with('category', 'user')->where('slug', $slug)->first();
         $posts = Post::with('category', 'user')->inRandomOrder()->limit(3)->get();
         //dd("gfd");
-
         $relatedPosts = Post::orderBy('category_id', 'desc')->inRandomOrder()->take(4)->get();
         $firstRelatedPost = $relatedPosts->splice(0, 1);
         $firstRelatedPosts2 = $relatedPosts->splice(0, 2);
@@ -76,7 +71,6 @@ class FrontEndController extends Controller
         //dd($categories);
         $tags =Tag::all();
         if($post){
-        $tags =Category::all();
         $firstRelatedPosts2 = $relatedPosts->splice(0, 2);
         return view('website.post', compact('post','posts','categories','tags','firstRelatedPost','firstRelatedPosts2','lastRelatedPost'));
         } else {
