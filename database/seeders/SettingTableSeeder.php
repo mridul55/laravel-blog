@@ -17,7 +17,6 @@ class SettingTableSeeder extends Seeder
             'name' => 'Example.com',
             'copyroght' => 'Copyright © 2023 All rights reserved | This template is made
              with  by Colorlib---Downloaded from Themeslab',
-
         ]);
     }
 }
