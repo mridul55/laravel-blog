@@ -202,7 +202,7 @@
                                 <p>Dashboard</p>
                             </a>
                         </li>
-                        @if(auth()->user()->role == 1)
+                      
                         <li class="nav-item mt-auto">
                             <a href="{{ route('category.index') }}" class="nav-link">
                                 <i class="nav-icon fas fa-tags"></i>
@@ -211,7 +211,7 @@
                                 </p>
                             </a>
                         </li>
-                        @endif
+                      
                         
                         <!-- This id Tag sidebar here.... -->
                         <li class="nav-item mt-auto">
